@@ -166,3 +166,25 @@ class UpdateUserinfo(View):
             print(e)
             res = {'code': 60204, 'message': "服务器错误请检查是否输入合理数据"}
         return JsonResponse(res)
+class UpdateUser(View):
+    authentication_classes = (ExpiringTokenAuthentication,)
+    def post(self,request):
+        postBody = request.body
+        data = json.loads(postBody)
+        token = request.META.get('HTTP_X_TOKEN', b'')
+        try:
+            tokenObj = Token.objects.get(key=token)
+            user_info = MyUser.objects.get(user=tokenObj.user.id)
+            role = user_info.user_role
+            if role != 'admin':
+                res = {'code': 60204, 'message': "您不是管理员没有权限"}
+            else:
+                change_info = MyUser.objects.get(user=data['account'])
+                change_info.user_role = data['role']
+                change_info.true_name = data['name']
+                change_info.save()
+                res = {'code': 200, 'message': '修改成功'}
+        except Exception as e:
+            print(e)
+            res = {'code': 60204, 'message': "服务器错误,请检查是否输入合理数据"}
+        return JsonResponse(res)

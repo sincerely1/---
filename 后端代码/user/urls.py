@@ -10,4 +10,6 @@ urlpatterns = [
     path('adduser/',AddUserView.as_view(),name='add_user'),
     path('deluser/',DelUserView.as_view(),name='del_user'),
     path('update_userinfo/',UpdateUserinfo.as_view(),name='update_user_info'),
+    path('updateuser/',UpdateUser.as_view(),name='update_user'),
+
 ]
