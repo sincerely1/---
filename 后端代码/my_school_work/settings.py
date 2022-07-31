@@ -74,6 +74,7 @@ TEMPLATES = [
         },
     },
 ]
+STATIC_URL = '/dist/static/'
 STATICFILES_DIRS= ['dist/static']  # 添加静态文件路径
 WSGI_APPLICATION = 'my_school_work.wsgi.application'
 
@@ -124,7 +125,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
+
 
 REST_FRAMEWORK = {
 
