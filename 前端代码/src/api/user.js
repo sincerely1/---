@@ -47,7 +47,8 @@ export function addUser(data) {
 export function updateUser() {
   return request({
     url: 'api/user/updateuser/',
-    method: 'post'
+    method: 'post',
+    data: data
   })
 }
 

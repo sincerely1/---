@@ -177,7 +177,7 @@ export default {
     async confirmUser() {
       const isChange = this.dialogType === 'edit'
       if (isChange) {
-        await updateUser(this.user.name, this.user.role)
+        await updateUser({ account: this.user.account, name: this.user.name, role: this.user.role })
         this.dialogeditVisible = false
         for (let index = 0; index < this.userlist.length; index++) {
           if (this.userlist[index].name === this.user.name) {
